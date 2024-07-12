@@ -2,6 +2,7 @@ from data_engine import DataEngine
 from user_request import UserRequest
 from player import Player
 from match_making import MatchMaking
+import copy
 
 class Coordinator:
     def __init__(self):
@@ -26,7 +27,10 @@ class Coordinator:
         self.update_player_list()
 
     def generate_matches(self):
-        self.match_making.generate_matches(self.player_list, self.user_request.number_of_matches)
+        player_list_copy = copy.deepcopy(self.player_list)
+        matches = self.match_making.generate_matches(player_list_copy, self.user_request.days_per_week * self.user_request.number_of_weeks)
+        player_list_copy.clear()
+        self.data_engine.write_matches(matches)
 
     #update user files
     def update_player_list(self) -> None:
