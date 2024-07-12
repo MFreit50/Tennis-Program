@@ -28,7 +28,7 @@ class Player():
         CDP = self.consecutive_days_played
         CDNP = self.consecutive_days_not_played
         GL = self.games_left()
-        self.match_priority = (UD * 0.20) - (CDP * 0.95) + (CDNP * 0.80) + (GL * 0.20)
+        self.match_priority = (UD * 0.15) - (CDP * 1.20) + (CDNP * 1.20) + (GL * 0.20)
 
     def games_left(self):
         return self.total_games - self.games_played
