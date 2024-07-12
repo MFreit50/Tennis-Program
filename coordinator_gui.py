@@ -9,10 +9,17 @@ class CoordinatorGUI:
         self.root.title("Coordinator GUI")
 
         # User Request Section
+
+        '''
+        Temporarily Removed because 
+        days per week * number of weeks 
+        is a better metric for determining 
+        number of matches to generate
+
         tk.Label(self.root, text="Number of Matches").grid(row=0, column=0)
         self.number_of_matches_entry = tk.Entry(self.root)
         self.number_of_matches_entry.grid(row=0, column=1)
-
+        '''
         tk.Label(self.root, text="Days per Week").grid(row=1, column=0)
         self.days_per_week_entry = tk.Entry(self.root)
         self.days_per_week_entry.grid(row=1, column=1)
@@ -21,7 +28,7 @@ class CoordinatorGUI:
         self.number_of_weeks_entry = tk.Entry(self.root)
         self.number_of_weeks_entry.grid(row=2, column=1)
 
-        self.number_of_matches_entry.insert(0, self.coordinator.user_request.number_of_matches)
+        #self.number_of_matches_entry.insert(0, self.coordinator.user_request.number_of_matches)
         self.days_per_week_entry.insert(0, self.coordinator.user_request.days_per_week)
         self.number_of_weeks_entry.insert(0, self.coordinator.user_request.number_of_weeks)
 
@@ -46,7 +53,8 @@ class CoordinatorGUI:
     def create_user_request(self, ignore_error_box) -> bool:
 
         try:
-            number_of_matches = int(self.number_of_matches_entry.get())
+            #number_of_matches = int(self.number_of_matches_entry.get())
+            number_of_matches = int(self.days_per_week_entry.get() * int(self.number_of_weeks_entry.get()))
             days_per_week = int(self.days_per_week_entry.get())
             number_of_weeks = int(self.number_of_weeks_entry.get())
         except ValueError:
@@ -54,7 +62,9 @@ class CoordinatorGUI:
                 messagebox.showerror("Error", f"Invalid input for user request")
             return False
         
-        if number_of_matches < 1 or days_per_week < 1 or number_of_weeks < 1:
+        #if number_of_matches < 1 or days_per_week < 1 or number_of_weeks < 1:
+        
+        if days_per_week < 1 or number_of_weeks < 1:
             if ignore_error_box == False:
                 messagebox.showerror("Error", f"User Request Values must be above 1")
             return False
