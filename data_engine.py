@@ -40,3 +40,8 @@ class DataEngine():
         with open("save.json", "w") as file:
             json.dump(user_request_dict, file, indent=4)
         return
+    
+    def write_matches(self, matches) -> None:
+        with open("matches.txt", "w") as file:
+            for key, value in matches.items():
+                file.write(f"{key}: {value}\n")
