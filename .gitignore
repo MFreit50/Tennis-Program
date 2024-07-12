@@ -1,3 +1,5 @@
 
 players.json
 matches.txt
+save.json
+*.pyc
