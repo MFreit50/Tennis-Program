@@ -28,7 +28,7 @@ class Coordinator:
 
     def generate_matches(self):
         player_list_copy = copy.deepcopy(self.player_list)
-        matches = self.match_making.generate_matches(player_list_copy, self.user_request.days_per_week * self.user_request.number_of_weeks)
+        matches = self.match_making.generate_matches(player_list_copy, self.user_request.number_of_matches)
         player_list_copy.clear()
         self.data_engine.write_matches(matches)
 

@@ -54,7 +54,7 @@ class CoordinatorGUI:
 
         try:
             #number_of_matches = int(self.number_of_matches_entry.get())
-            number_of_matches = int(self.days_per_week_entry.get() * int(self.number_of_weeks_entry.get()))
+            number_of_matches = int(self.days_per_week_entry.get()) * int(self.number_of_weeks_entry.get())
             days_per_week = int(self.days_per_week_entry.get())
             number_of_weeks = int(self.number_of_weeks_entry.get())
         except ValueError:
