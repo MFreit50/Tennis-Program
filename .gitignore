@@ -4,3 +4,7 @@ matches.txt
 save.json
 *.pyc
 *.json
+build/
+main.spec
+tennis.png
+player_matrix.txt
